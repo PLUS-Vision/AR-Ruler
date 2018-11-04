@@ -36,12 +36,17 @@ class SettingViewController: UIViewController {
     
     @IBAction func pixoAppDidTap(_ sender: Any) {
         UIApplication.shared.open(URL(string: "https://itunes.apple.com/app/id1333531743")!,
-                                  options: [:],
+                                  options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]),
                                   completionHandler: nil)
     }
     @IBAction func playAppDidTap(_ sender: Any) {
         UIApplication.shared.open(URL(string: "https://itunes.apple.com/app/id1071726144")!,
-                                  options: [:],
+                                  options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]),
                                   completionHandler: nil)
     }
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToUIApplicationOpenExternalURLOptionsKeyDictionary(_ input: [String: Any]) -> [UIApplication.OpenExternalURLOptionsKey: Any] {
+	return Dictionary(uniqueKeysWithValues: input.map { key, value in (UIApplication.OpenExternalURLOptionsKey(rawValue: key), value)})
 }

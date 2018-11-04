@@ -31,8 +31,8 @@ class LineSetNode: NSObject {
         let text = SCNText (string: "--", extrusionDepth: 0.1)
         text.font = UIFont.boldSystemFont(ofSize: 10)
         text.firstMaterial?.diffuse.contents = UIColor.white
-        text.alignmentMode  = kCAAlignmentCenter
-        text.truncationMode = kCATruncationMiddle
+        text.alignmentMode  = convertFromCATextLayerAlignmentMode(CATextLayerAlignmentMode.center)
+        text.truncationMode = convertFromCATextLayerTruncationMode(CATextLayerTruncationMode.middle)
         text.firstMaterial?.isDoubleSided = true
         textNode = SCNNode(geometry: text)
         textNode.scale = SCNVector3(1/500.0, 1/500.0, 1/500.0)
@@ -115,3 +115,13 @@ class LineSetNode: NSObject {
 
 
 
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromCATextLayerAlignmentMode(_ input: CATextLayerAlignmentMode) -> String {
+	return input.rawValue
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromCATextLayerTruncationMode(_ input: CATextLayerTruncationMode) -> String {
+	return input.rawValue
+}

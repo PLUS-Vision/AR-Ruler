@@ -23,8 +23,8 @@ class RulerARProViewController: UIViewController {
         case area
         func toAttrStr() -> NSAttributedString {
             let str = self == .area ? R.string.rulerString.startArea() : R.string.rulerString.startLength()
-            return NSAttributedString(string: str, attributes: [NSAttributedStringKey.font : UIFont.boldSystemFont(ofSize: 20),
-                                                                 NSAttributedStringKey.foregroundColor: UIColor.black])
+            return NSAttributedString(string: str, attributes: [NSAttributedString.Key.font : UIFont.boldSystemFont(ofSize: 20),
+                                                                 NSAttributedString.Key.foregroundColor: UIColor.black])
         }
     }
     struct Image {
@@ -111,6 +111,7 @@ class RulerARProViewController: UIViewController {
                     HUG.show(title: Localization.arExcessiveMotion(), message: Localization.arInitializingMessage(), inSource: self, autoDismissDuration: 5)
                 case .excessiveMotion:
                     HUG.show(title: Localization.arExcessiveMotion(), message: Localization.arExcessiveMotionMessage(), inSource: self, autoDismissDuration: 5)
+                default: break
                 }
             case .normal:
                 HUG.dismiss()
@@ -259,7 +260,7 @@ class RulerARProViewController: UIViewController {
             }
             
         }
-        NotificationCenter.default.addObserver(forName: NSNotification.Name.UIApplicationDidEnterBackground, object: nil, queue: OperationQueue.main) { _ in
+        NotificationCenter.default.addObserver(forName: UIApplication.didEnterBackgroundNotification, object: nil, queue: OperationQueue.main) { _ in
             cleanLine()
         }
     }
@@ -478,7 +479,7 @@ fileprivate extension RulerARProViewController {
         let configuration = ARWorldTrackingConfiguration()
         configuration.planeDetection = .horizontal
         sceneView.session.run(configuration, options: [.resetTracking, .removeExistingAnchors])
-        sceneView.debugOptions = [ARSCNDebugOptions.showFeaturePoints]
+        sceneView.debugOptions = [SCNDebugOptions.showFeaturePoints]
         measureUnit = ApplicationSetting.Status.defaultUnit
         resultLabel.attributedText = mode.toAttrStr()
         updateFocusSquare()

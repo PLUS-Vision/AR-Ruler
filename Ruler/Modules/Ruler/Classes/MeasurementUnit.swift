@@ -82,11 +82,11 @@ struct MeasurementUnit {
         func buildAttributeString(value: String, unit: String) -> NSAttributedString {
             let main = NSMutableAttributedString()
             let v = NSMutableAttributedString(string: value,
-                                              attributes: [NSAttributedStringKey.font: valueFont,
-                                                           NSAttributedStringKey.foregroundColor: color])
+                                              attributes: [NSAttributedString.Key.font: valueFont,
+                                                           NSAttributedString.Key.foregroundColor: color])
             let u = NSMutableAttributedString(string: unit,
-                                              attributes: [NSAttributedStringKey.font: unitFont,
-                                                           NSAttributedStringKey.foregroundColor: color])
+                                              attributes: [NSAttributedString.Key.font: unitFont,
+                                                           NSAttributedString.Key.foregroundColor: color])
             main.append(v)
             main.append(u)
             return main

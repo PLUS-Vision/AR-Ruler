@@ -65,6 +65,7 @@ extension SCNNode {
 extension SCNVector3 {
     
     init(_ vec: vector_float3) {
+        self.init()
         self.x = vec.x
         self.y = vec.y
         self.z = vec.z

@@ -35,7 +35,7 @@ struct HUG {
             return base
         }
         
-        let vc = UIAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
+        let vc = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
         guard let source = viewController ?? topViewController() else { return }
         _alertController?.dismiss(animated: false, completion: nil)
         _alertController = vc

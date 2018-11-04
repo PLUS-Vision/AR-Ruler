@@ -67,7 +67,7 @@ class PopButton: UIControl {
             centerY -= btn.frame.height + 10
             UIView.animate(withDuration: 0.2,
                            delay: 0,
-                           options: UIViewAnimationOptions.curveEaseOut,
+                           options: UIView.AnimationOptions.curveEaseOut,
                            animations: {
                             btn.center.y = centerY
             }, completion: nil)
@@ -81,7 +81,7 @@ class PopButton: UIControl {
         for btn in buttonArray {
             UIView.animate(withDuration: 0.2,
                            delay: 0,
-                           options: UIViewAnimationOptions.curveEaseOut,
+                           options: UIView.AnimationOptions.curveEaseOut,
                            animations: {
                             btn.center = p
             }, completion: nil)
